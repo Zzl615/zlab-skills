@@ -8,6 +8,7 @@ A curated collection of reusable AI-agent skills for software engineering workfl
 | --- | --- | --- |
 | [git-smart-commit](skills/git-smart-commit/SKILL.md) | `gsc`、"分析提交" | 分析 git 变更，按功能拆分并生成 Angular 规范的中文 commit 信息 |
 | [tapd-xls-to-md](skills/tapd-xls-to-md/SKILL.md) | 文件名以 `_tapd.xls` 结尾 | 将 TAPD 导出的损坏/二进制 XLS 文件转换为 Markdown Bug 列表或详细报告 |
+| [code-to-stories](skills/code-to-stories/SKILL.md) | "代码转用户故事" 等 | 从代码中逆向提取业务逻辑，自动生成 User Story 和 Gherkin 验收场景 |
 
 ## 🚀 安装与使用
 
@@ -30,6 +31,7 @@ ln -s /path/to/zlab-skills/skills ~/.gemini/antigravity/skills
 ```bash
 cp -r skills/git-smart-commit ~/.gemini/antigravity/skills/
 cp -r skills/tapd-xls-to-md ~/.gemini/antigravity/skills/
+cp -r skills/code-to-stories ~/.gemini/antigravity/skills/
 ```
 
 ---
@@ -82,6 +84,21 @@ python3 <skill_dir>/tapd-xls-to-md/scripts/xls_to_detail.py <path_to_xls_file> >
 
 ---
 
+### 📖 code-to-stories
+
+将任意代码逆向转化为标准 User Story 和可直接使用的 Gherkin `.feature` 文件。适用于从代码生成需求、补齐遗留系统文档等场景。
+
+**触发条件：** 提及"从代码生成需求"、"代码转用户故事"、"生成 gherkin"、"分析这段代码的业务逻辑"等。
+
+**主要功能：**
+
+1. **代码分析** — 识别代码边界、模式、角色（Actor）并建立场景矩阵。
+2. **生成 User Story** — 基于识别出的业务流，生成符合 INVEST 原则的标准 User Story。
+3. **生成 Gherkin 特性文件** — 提供完整的 `Given`/`When`/`Then` 测试用例（涵盖正向、异常和边界条件）。
+4. **结构化完整输出** — 提供统一规范的 Markdown 输出，包含业务逻辑分析、场景矩阵、US、Gherkin 及局限性说明。
+
+---
+
 ## 📁 目录结构
 
 ```
@@ -89,6 +106,8 @@ zlab-skills/
 ├── README.md
 ├── LICENSE
 └── skills/
+    ├── code-to-stories/
+    │   └── SKILL.md
     ├── git-smart-commit/
     │   └── SKILL.md
     └── tapd-xls-to-md/
