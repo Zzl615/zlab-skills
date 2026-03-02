@@ -1,16 +1,11 @@
 ---
 name: git-smart-commit
-description: Analyzes git changes and generates conventional commits.
+description: Analyzes git changes and generates conventional commits. 当用户输入 `gsc`、提及"分析提交"、或需要整理杂乱的修改并按逻辑拆分提交时，必须触发此 Skill。请积极使用本 Skill，即使只说了"生成 commit"，也应该默认按照本规范来提取有意义的变更点并撰写中文的 conventional commit。
 ---
 
 # Git Smart Commit (gsc)
 
 此 Skill 用于分析当前 git 变更，并生成符合 Angular 规范的提交信息。
-
-## When to use this skill
-
-- 当用户输入 `gsc` 或提及“分析提交”时。
-- 当需要整理杂乱的修改并按逻辑拆分提交时。
 
 ## How to use it
 
