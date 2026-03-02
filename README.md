@@ -117,9 +117,24 @@ zlab-skills/
             └── xls_to_detail.py
 ```
 
-## 🤝 贡献新 Skill
+## 📝 Skill 开发规范 (基于 Anthropic Guidelines)
 
-1. 在 `skills/` 下创建以 skill 名称命名的目录
-2. 编写 `SKILL.md`，需包含 YAML frontmatter（`name`、`description`）和使用说明
-3. 如有脚本，放在 `scripts/` 子目录下
-4. 更新本 README 的 Skills 列表
+如果你想贡献新的 Skill，请遵循以下规范：
+
+### 1. 结构与文件
+- 在 `skills/` 下创建以 skill 名称命名的目录。
+- 必须包含 `SKILL.md` 文件。
+- 如果有可执行脚本、庞大的 Prompt Context，建议按职责存放到 `scripts/`、`references/` 等子目录，实现**渐进式披露 (Progressive Disclosure)**（即按需加载，避免污染主提示词空间）。
+- 建议提供测试验证用例并存放于 `evals/evals.json` 中。
+
+### 2. 编写 SKILL.md
+- **Frontmatter 必须完整**：文件顶部必须包含 YAML 语法的 `name` 和 `description`。
+- **Trigger 词写在 Description 里**："When to use"（什么时候该触发该 skill）的描述**必须且只能**写在 `description` 中。不要在 markdown 正文中单开一节写 "When to use"。
+- **Description 要有引导性（Pushy）**：为了防止 Agent "漏触发"（undertrigger），`description` 应该具有强烈的引导性。例如："当用户提及 XXX 时，即使只说了 YYY，也**必须**使用本 skill"。
+- **字数限制**：`SKILL.md` 的正文部分尽量控制在 500 行以内。如果有超长的参考文件（>300行），请放到 `references/` 里并包含目录。
+- **使用祈使句**：在核心指令中，多使用明确的祈使句告知 Agent 该做什么。
+- **提供示例 (Examples pattern)**：给出具体的 Input 和 Output 范例，或者格式模板。
+
+### 3. 提交流程
+1. 完成 `SKILL.md` 编写后，在项目中更新主 `README.md` 的 Skills 列表。
+2. 添加相应的说明和用例。
