@@ -1,0 +1,20 @@
+{
+  "skill_name": "git-smart-commit",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我刚刚在这个对话里帮你实现了用户登录功能：新增了 src/auth/login.ts（JWT 验证逻辑）、src/middleware/auth.ts（鉴权中间件），同时修复了之前 src/api/users.ts 里分页 offset 计算错误的 bug，还顺手更新了 README.md 的部署文档。现在帮我用 gsc 生成提交信息。",
+      "expected_output": "识别出3个独立 commit：feat(auth) 登录功能、fix(api) 分页 bug、docs(readme) 文档更新。按功能而非文件分组，格式符合 Angular 规范，中文 subject，最后询问用户确认"
+    },
+    {
+      "id": 2,
+      "prompt": "我手动改了一堆文件，帮我分析一下 git 变更并生成提交。（假设 git diff 显示：修改了 components/Button.tsx 样式、components/Modal.tsx 样式、pages/Dashboard.tsx 新增图表组件、utils/chartHelper.ts 新增图表工具函数、package.json 新增 recharts 依赖）",
+      "expected_output": "识别出2个 commit：feat(dashboard) 新增图表功能（Dashboard+chartHelper+package.json）、style(ui) 更新按钮和弹窗样式（Button+Modal）。按功能分组，不按文件一一列出"
+    },
+    {
+      "id": 3,
+      "prompt": "没有任何 git 变更，帮我 gsc",
+      "expected_output": "提示当前没有检测到 git 变更，停止执行，不生成任何提交信息"
+    }
+  ]
+}
