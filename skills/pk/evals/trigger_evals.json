@@ -1,0 +1,82 @@
+[
+  {
+    "query": "我的 other.md 又堆了一大堆东西，帮我整理一下分流到各个目录，里面有 bug 修复记录、面试复盘、读书心得还有一些购物清单，全混在一起了",
+    "should_trigger": true
+  },
+  {
+    "query": "知识库太乱了，Inbox 里面有面试记录、技术笔记、读书心得全混在一起，帮我按领域整理到对应目录吧",
+    "should_trigger": true
+  },
+  {
+    "query": "清理一下我的笔记收件箱，other.md 里有好几个月没整理的内容了，有技术总结、生活记录、还有一些灵感想法",
+    "should_trigger": true
+  },
+  {
+    "query": "pkm 重构，把 other.md 里的内容按领域分类，Skills 放技术、ReadNote 放读书笔记、Interview 放职业相关",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我做笔记分流，Inbox.md 里有很多零散记录，想把它们整理成结构化的形式存到合适的目录",
+    "should_trigger": true
+  },
+  {
+    "query": "我的笔记库乱掉了，other.md 里有技术笔记、财务流水、体检提醒、学习计划……能帮我整理分类一下吗",
+    "should_trigger": true
+  },
+  {
+    "query": "整理我的笔记，把技术沉淀放到 Skills/2026，读书笔记放到 ReadNote/2026，职业相关放到 Interview/2026，生活的放到 Life",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我把这份收件箱文档的内容拆解分发到各个分类文件夹里，重要的单独建文件，零碎的追加到汇总文件",
+    "should_trigger": true
+  },
+  {
+    "query": "知识库重构，按照领域把 inbox 里的东西分类存档，同时清空收件箱只保留待办和灵感",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我整理 other.md，里面全是我这半年随手记的东西，现在想重新建立一个干净的个人知识体系",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我写一篇关于 nginx 反向代理配置的技术笔记，要包含 proxy_pass 指令的用法和常见坑",
+    "should_trigger": false
+  },
+  {
+    "query": "我的 other.md 里有一条关于 Redis 缓存穿透的记录，帮我把那段内容补充完善，加上代码示例",
+    "should_trigger": false
+  },
+  {
+    "query": "在我的笔记库里搜索所有跟 kubernetes 相关的文件，列出文件路径和每个文件的 description 字段",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我建立一个新的 Markdown 笔记模板，用于记录读书心得，需要有书名、作者、核心观点、个人反思这几个部分",
+    "should_trigger": false
+  },
+  {
+    "query": "我想把我的 Obsidian 笔记库迁移到 Notion，两个工具各有什么优缺点，迁移时需要注意什么",
+    "should_trigger": false
+  },
+  {
+    "query": "用 Python 写一个脚本扫描我的 markdown 文件目录，统计每个 tag 的使用频率并排序输出",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我把这篇掘金文章的核心内容总结成笔记，保存到 Skills 目录下，文章讲的是 Go 协程调度原理",
+    "should_trigger": false
+  },
+  {
+    "query": "我在 other.md 里记了一个生产环境的 bug 现象，帮我分析一下可能是什么原因：服务每隔6小时就 OOM 重启",
+    "should_trigger": false
+  },
+  {
+    "query": "我的 Skills/glossary.md 里「消息队列」和「MQ」混用了，帮我把文件里所有「MQ」替换成「消息队列」",
+    "should_trigger": false
+  },
+  {
+    "query": "新建一个文件 Skills/2026/Docker_Network_Setup.md，把下面这段关于 bridge 网络模式的配置说明存进去",
+    "should_trigger": false
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "skill_name": "pkm-refactor",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我整理 other.md，里面有这些内容：\n1. 【技术】上周排查了一个 Redis 缓存穿透的问题，解决方案是加布隆过滤器\n2. 【读书】《置身事内》读完了，核心是地方政府用土地财政推动城镇化\n3. 【职业】字节跳动 后端工程师 JD：要求3年以上Go经验，熟悉分布式系统\n4. 【生活】下周要续签房租合同，记得带身份证\n5. 【待办】学习 Rust 所有权模型",
+      "expected_output": "将5条内容正确分流：Redis笔记→Skills/2026/新建md文件（含完整Front Matter）；读书心得→ReadNote/2026/新建md文件；字节JD→Interview/2026/新建md文件；房租提醒→Life/2026汇总文件追加（聚合文件格式）；学习Rust待办→保留在other.md。清空other.md原始条目，顶部写入分流说明和日期。"
+    },
+    {
+      "id": 2,
+      "prompt": "other.md 里有一条技术记录：「Nginx 反向代理：用 proxy_pass 转发请求，隐藏后端端口」，帮我提取成正式笔记",
+      "expected_output": "创建 Skills/2026/Nginx_Reverse_Proxy_Setup.md，包含完整 YAML Front Matter（title, description≤50字, tags, date, source, status, last_verified, confidence, related），正文按「背景→原理/方案→实践记录→我的反思」结构，description字段直接陈述结论而非「本文介绍」开头，status=stable时last_verified必填。"
+    },
+    {
+      "id": 3,
+      "prompt": "清理完 Inbox.md 后，我希望原文件里还能看到这次清理了哪些内容、分流到了哪里",
+      "expected_output": "在 Inbox.md 顶部写入分流说明注释，格式为「<!-- 上次清理：YYYY-MM-DD | 已分流：文件1, 文件2 -->」，仅保留待办任务和未来灵感，其余内容删除。"
+    }
+  ]
+}
