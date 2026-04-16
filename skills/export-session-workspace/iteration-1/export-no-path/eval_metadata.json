@@ -1,0 +1,12 @@
+{
+  "eval_id": 2,
+  "eval_name": "export-no-path",
+  "prompt": "导出会话",
+  "assertions": [
+    "Output contains all three top-level headings: '# Session Title', '# Timeline', and '# Final Conclusion'",
+    "Each round in Timeline has all four sub-headings: '### 用户', '### AI', '### 执行', '### 结果'",
+    "GitHub Actions YAML content appears inside a fenced code block",
+    "'# Final Conclusion' contains all four sub-sections: '## 问题本质', '## 关键结论', '## 最终方案', '## 后续动作'",
+    "Since no path was specified, agent either asks the user about save location OR saves with a date-based default filename (session-YYYY-MM-DD.md format)"
+  ]
+}

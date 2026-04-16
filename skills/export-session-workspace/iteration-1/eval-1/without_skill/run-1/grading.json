@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Output contains all three top-level headings: '# Session Title', '# Timeline', and '# Final Conclusion'",
+      "passed": false,
+      "evidence": "Has H1 title '# Session Notes: FastAPI 500 错误调试'. Missing '# Timeline' — uses '## Round 1 — 问题描述与初步排查' directly. Missing '# Final Conclusion' — uses '## 总结' instead."
+    },
+    {
+      "text": "Each round in Timeline has all four sub-headings: '### 用户', '### AI', '### 执行', '### 结果'",
+      "passed": false,
+      "evidence": "Uses '**User:**' / '**Claude:**' inline bold labels, not ### subsections. No '### 执行' or '### 结果' headings anywhere in the document."
+    },
+    {
+      "text": "Shell commands (e.g., uvicorn, create_engine code) appear inside fenced code blocks, not as plain text",
+      "passed": true,
+      "evidence": "uvicorn command in ```bash block. create_engine lazy-init and lifecycle hooks both in ```python blocks."
+    },
+    {
+      "text": "'# Final Conclusion' contains all four sub-sections: '## 问题本质', '## 关键结论', '## 最终方案', '## 后续动作'",
+      "passed": false,
+      "evidence": "No '# Final Conclusion' section. Ends with a '## 总结' section containing a table — none of the four required sub-sections (问题本质/关键结论/最终方案/后续动作) are present."
+    },
+    {
+      "text": "The transcript shows save_session.py was invoked OR the file was written to ~/notes/session.md",
+      "passed": false,
+      "evidence": "No skill guidance, so save_session.py was never invoked. Agent was told ~/notes is a file, so that save was skipped. Only the workspace output was written."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 4,
+    "total": 5,
+    "pass_rate": 0.2
+  },
+  "claims": [],
+  "eval_feedback": {
+    "suggestions": [],
+    "overall": "Assertions are well-discriminating — baseline fails 4/5 cleanly. Code block assertion (A3) passes for both, suggesting it may not be the most useful differentiator for this skill."
+  }
+}

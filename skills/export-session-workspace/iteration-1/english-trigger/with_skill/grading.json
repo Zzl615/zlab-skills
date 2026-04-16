@@ -1,0 +1,46 @@
+{
+  "expectations": [
+    {
+      "text": "Output contains all three top-level headings: '# Session Title', '# Timeline', and '# Final Conclusion'",
+      "passed": true,
+      "evidence": "Line 1: '# Optimizing a Slow SQL Query on the orders Table', Line 3: '# Timeline', Line 82: '# Final Conclusion'"
+    },
+    {
+      "text": "Each round in Timeline has all four sub-headings: '### 用户', '### AI', '### 执行', '### 结果'",
+      "passed": true,
+      "evidence": "All 3 rounds contain exactly ### 用户, ### AI, ### 执行, ### 结果. English conversation context preserved correctly."
+    },
+    {
+      "text": "SQL query (SELECT * FROM orders...) and CREATE INDEX statement appear inside fenced code blocks",
+      "passed": true,
+      "evidence": "Lines 11-13: SELECT query in ```sql block. Lines 21-24: EXPLAIN ANALYZE in ```sql block. Lines 46-48 and 51-53: CREATE INDEX in ```sql blocks. \\d orders also in ```sql block."
+    },
+    {
+      "text": "'# Final Conclusion' contains all four sub-sections: '## 问题本质', '## 关键结论', '## 最终方案', '## 后续动作'",
+      "passed": true,
+      "evidence": "Lines 84, 88, 94, 104: exactly ## 问题本질, ## 关键结论, ## 最终方案, ## 后续动作. Note: Final Conclusion uses Chinese sub-headings even though the conversation was in English — consistent with skill template."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "claims": [
+    {
+      "claim": "English trigger 'export session' correctly activates the skill's full structure",
+      "type": "quality",
+      "verified": true,
+      "evidence": "All structural requirements met. Chinese section headings (用户/AI/执行/结果) used even for English-language conversation content."
+    }
+  ],
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "reason": "Consider adding an assertion that checks the skill handles mixed-language output correctly — Chinese structural headings with English conversation content. This is a real edge case worth verifying."
+      }
+    ],
+    "overall": "Perfect score. English trigger handled correctly with full structural compliance."
+  }
+}

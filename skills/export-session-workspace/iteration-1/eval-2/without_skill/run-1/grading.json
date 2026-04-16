@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Output contains all three top-level headings: '# Session Title', '# Timeline', and '# Final Conclusion'",
+      "passed": false,
+      "evidence": "Has H1 title '# 会话导出 — Node.js 项目 CI 配置'. Missing '# Timeline'. Missing '# Final Conclusion' — uses '## 最终产出' instead."
+    },
+    {
+      "text": "Each round in Timeline has all four sub-headings: '### 用户', '### AI', '### 执行', '### 结果'",
+      "passed": false,
+      "evidence": "Uses '**用户:**' / '**Claude:**' inline bold, not ### subsections. Round 1 merges user and Claude turns together. No '### 执行' or '### 结果' headings."
+    },
+    {
+      "text": "GitHub Actions YAML content appears inside a fenced code block",
+      "passed": true,
+      "evidence": "Lines 30-57 and 69-103: full YAML in ```yaml fenced blocks in both Round 2 and Round 3."
+    },
+    {
+      "text": "'# Final Conclusion' contains all four sub-sections: '## 问题本质', '## 关键结论', '## 最终方案', '## 后续动作'",
+      "passed": false,
+      "evidence": "Ends with '## 最终产出' containing a configuration summary — none of the four required sub-sections present."
+    },
+    {
+      "text": "Since no path was specified, agent either asks the user about save location OR saves with a date-based default filename (session-YYYY-MM-DD.md format)",
+      "passed": false,
+      "evidence": "No path-handling behavior shown. Agent wrote directly to the provided workspace path without any default filename logic or prompting the user. No date-based naming."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 4,
+    "total": 5,
+    "pass_rate": 0.2
+  },
+  "claims": [],
+  "eval_feedback": {
+    "suggestions": [],
+    "overall": "Clean baseline failure — confirms the skill's structure (Timeline / Final Conclusion / four subsections) is genuinely not produced by default."
+  }
+}

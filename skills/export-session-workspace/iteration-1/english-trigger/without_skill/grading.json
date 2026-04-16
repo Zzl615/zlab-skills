@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Output contains all three top-level headings: '# Session Title', '# Timeline', and '# Final Conclusion'",
+      "passed": false,
+      "evidence": "Has H1 '# Claude Code Session Export'. Missing '# Timeline'. Missing '# Final Conclusion' — uses '## Outcome' and '## Conversation' structure instead."
+    },
+    {
+      "text": "Each round in Timeline has all four sub-headings: '### 用户', '### AI', '### 执行', '### 结果'",
+      "passed": false,
+      "evidence": "Uses '### Round N — Topic' headings with '**User:**' / '**Claude:**' / '**Finding:**' / '**Result:**' bold labels — no Chinese subsection headings at all."
+    },
+    {
+      "text": "SQL query (SELECT * FROM orders...) and CREATE INDEX statement appear inside fenced code blocks",
+      "passed": true,
+      "evidence": "Lines 16-20: SELECT query in ```sql block. Lines 38-40: CREATE INDEX in ```sql block. \\d orders also in ```sql block."
+    },
+    {
+      "text": "'# Final Conclusion' contains all four sub-sections: '## 问题本质', '## 关键结论', '## 最终方案', '## 后续动作'",
+      "passed": false,
+      "evidence": "No '# Final Conclusion' section. Document ends with '## Outcome' table and an italic footer line — none of the four Chinese sub-sections present."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 3,
+    "total": 4,
+    "pass_rate": 0.25
+  },
+  "claims": [],
+  "eval_feedback": {
+    "suggestions": [],
+    "overall": "Baseline consistently fails on structure. SQL code-block assertion passes for both — confirms it's the weakest discriminator."
+  }
+}

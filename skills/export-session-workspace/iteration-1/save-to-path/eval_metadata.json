@@ -1,0 +1,12 @@
+{
+  "eval_id": 1,
+  "eval_name": "save-to-path",
+  "prompt": "帮我整理这次聊天，保存到 ~/notes/session.md",
+  "assertions": [
+    "Output contains all three top-level headings: '# Session Title', '# Timeline', and '# Final Conclusion'",
+    "Each round in Timeline has all four sub-headings: '### 用户', '### AI', '### 执行', '### 结果'",
+    "Shell commands (e.g., uvicorn, create_engine code) appear inside fenced code blocks, not as plain text",
+    "'# Final Conclusion' contains all four sub-sections: '## 问题本质', '## 关键结论', '## 最终方案', '## 后续动作'",
+    "The transcript shows save_session.py was invoked OR the file was written to ~/notes/session.md"
+  ]
+}

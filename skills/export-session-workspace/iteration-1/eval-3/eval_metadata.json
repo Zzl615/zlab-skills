@@ -1,0 +1,11 @@
+{
+  "eval_id": 3,
+  "eval_name": "english-trigger",
+  "prompt": "export session",
+  "assertions": [
+    "Output contains all three top-level headings: '# Session Title', '# Timeline', and '# Final Conclusion'",
+    "Each round in Timeline has all four sub-headings: '### 用户', '### AI', '### 执行', '### 结果'",
+    "SQL query (SELECT * FROM orders...) and CREATE INDEX statement appear inside fenced code blocks",
+    "'# Final Conclusion' contains all four sub-sections: '## 问题本质', '## 关键结论', '## 最终方案', '## 后续动作'"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "skill_name": "export-session",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我整理这次聊天，保存到 ~/notes/session.md",
+      "expected_output": "生成完整的 Markdown 文档（含 Session Title、Timeline 各轮次、Final Conclusion），并调用 save_session.py 保存到 ~/notes/session.md，输出最终保存路径。",
+      "files": [],
+      "assertions": [
+        "Output contains all three top-level headings: '# Session Title', '# Timeline', and '# Final Conclusion'",
+        "Each round in Timeline has all four sub-headings: '### 用户', '### AI', '### 执行', '### 结果'",
+        "Shell commands (e.g., uvicorn, create_engine code) appear inside fenced code blocks, not as plain text",
+        "'# Final Conclusion' contains all four sub-sections: '## 问题本质', '## 关键结论', '## 最终方案', '## 后续动作'",
+        "The transcript shows save_session.py was invoked OR the file was written to ~/notes/session.md"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "导出会话",
+      "expected_output": "生成完整的 Markdown 文档，输出到对话中后询问用户是否保存，或直接调用 save_session.py 使用默认文件名（session-YYYY-MM-DD.md）保存。",
+      "files": [],
+      "assertions": [
+        "Output contains all three top-level headings: '# Session Title', '# Timeline', and '# Final Conclusion'",
+        "Each round in Timeline has all four sub-headings: '### 用户', '### AI', '### 执行', '### 结果'",
+        "GitHub Actions YAML content appears inside a fenced code block",
+        "'# Final Conclusion' contains all four sub-sections: '## 问题本质', '## 关键结论', '## 最终方案', '## 后续动作'",
+        "Since no path was specified, agent either asks the user about save location OR saves with a date-based default filename (session-YYYY-MM-DD.md format)"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "export session",
+      "expected_output": "识别英文触发词，生成完整的 Markdown 文档，结构与中文触发一致：Session Title → Timeline → Final Conclusion，并询问或自动保存。",
+      "files": [],
+      "assertions": [
+        "Output contains all three top-level headings: '# Session Title', '# Timeline', and '# Final Conclusion'",
+        "Each round in Timeline has all four sub-headings: '### 用户', '### AI', '### 执行', '### 结果'",
+        "SQL query (SELECT * FROM orders...) and CREATE INDEX statement appear inside fenced code blocks",
+        "'# Final Conclusion' contains all four sub-sections: '## 问题本质', '## 关键结论', '## 最终方案', '## 后续动作'"
+      ]
+    }
+  ]
+}

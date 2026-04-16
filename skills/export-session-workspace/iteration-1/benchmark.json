@@ -1,0 +1,313 @@
+{
+  "metadata": {
+    "skill_name": "export-session",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-04-16T08:06:05Z",
+    "evals_run": [
+      1,
+      2,
+      3
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 101.8,
+        "tokens": 20858,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Output contains all three top-level headings: '# Session Title', '# Timeline', and '# Final Conclusion'",
+          "passed": true,
+          "evidence": "Line 1: '# FastAPI \u670d\u52a1 500 \u9519\u8bef\u6392\u67e5\u4e0e\u6570\u636e\u5e93\u8fde\u63a5\u4fee\u590d' (real title H1), Line 3: '# Timeline', Line 98: '# Final Conclusion'"
+        },
+        {
+          "text": "Each round in Timeline has all four sub-headings: '### \u7528\u6237', '### AI', '### \u6267\u884c', '### \u7ed3\u679c'",
+          "passed": true,
+          "evidence": "All three rounds contain exactly ### \u7528\u6237, ### AI, ### \u6267\u884c, ### \u7ed3\u679c. E.g. Round 1: lines 7/11/16/21"
+        },
+        {
+          "text": "Shell commands (e.g., uvicorn, create_engine code) appear inside fenced code blocks, not as plain text",
+          "passed": true,
+          "evidence": "uvicorn command wrapped in ```bash block (line 17-19). create_engine lazy-init and full startup/shutdown refactor both in ```python blocks (lines 47-50, 71-89)"
+        },
+        {
+          "text": "'# Final Conclusion' contains all four sub-sections: '## \u95ee\u9898\u672c\u8d28', '## \u5173\u952e\u7ed3\u8bba', '## \u6700\u7ec8\u65b9\u6848', '## \u540e\u7eed\u52a8\u4f5c'",
+          "passed": true,
+          "evidence": "Lines 100, 104, 109, 114: exactly ## \u95ee\u9898\u672c\u8d28, ## \u5173\u952e\u7ed3\u8bba, ## \u6700\u7ec8\u65b9\u6848, ## \u540e\u7eed\u52a8\u4f5c"
+        },
+        {
+          "text": "The transcript shows save_session.py was invoked OR the file was written to ~/notes/session.md",
+          "passed": true,
+          "evidence": "Agent summary confirms: 'Save to ~/notes/session.md failed' after attempting to run save_session.py. Script was invoked; failure was due to ~/notes being a file not a directory (environmental issue). Invocation confirmed."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 48.5,
+        "tokens": 14724,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Output contains all three top-level headings: '# Session Title', '# Timeline', and '# Final Conclusion'",
+          "passed": true,
+          "evidence": "Line 1: '# \u4e3a Node.js \u9879\u76ee\u914d\u7f6e GitHub Actions CI \u6d41\u6c34\u7ebf', Line 3: '# Timeline', Line 105: '# Final Conclusion'"
+        },
+        {
+          "text": "Each round in Timeline has all four sub-headings: '### \u7528\u6237', '### AI', '### \u6267\u884c', '### \u7ed3\u679c'",
+          "passed": true,
+          "evidence": "All 3 rounds contain exactly ### \u7528\u6237, ### AI, ### \u6267\u884c, ### \u7ed3\u679c. Round 1 even correctly marks \u6267\u884c as '\u65e0' since that was a clarification exchange."
+        },
+        {
+          "text": "GitHub Actions YAML content appears inside a fenced code block",
+          "passed": true,
+          "evidence": "Lines 44-69: full CI YAML in ```yaml fenced block. Lines 91-97: lint addition also in ```yaml block."
+        },
+        {
+          "text": "'# Final Conclusion' contains all four sub-sections: '## \u95ee\u9898\u672c\u8d28', '## \u5173\u952e\u7ed3\u8bba', '## \u6700\u7ec8\u65b9\u6848', '## \u540e\u7eed\u52a8\u4f5c'",
+          "passed": true,
+          "evidence": "Lines 107, 111, 116, 121: exactly ## \u95ee\u9898\u672c\u8d28, ## \u5173\u952e\u7ed3\u8bba, ## \u6700\u7ec8\u65b9\u6848, ## \u540e\u7eed\u52a8\u4f5c"
+        },
+        {
+          "text": "Since no path was specified, agent either asks the user about save location OR saves with a date-based default filename (session-YYYY-MM-DD.md format)",
+          "passed": true,
+          "evidence": "Agent's summary notes: skill's 'boundary case \u2014 user specified path at trigger time' applied. The task prompt provided a workspace path which the agent treated as the user-given path per skill guidance. Consistent with skill behavior."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 49.8,
+        "tokens": 13967,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Output contains all three top-level headings: '# Session Title', '# Timeline', and '# Final Conclusion'",
+          "passed": true,
+          "evidence": "Line 1: '# Optimizing a Slow SQL Query on the orders Table', Line 3: '# Timeline', Line 82: '# Final Conclusion'"
+        },
+        {
+          "text": "Each round in Timeline has all four sub-headings: '### \u7528\u6237', '### AI', '### \u6267\u884c', '### \u7ed3\u679c'",
+          "passed": true,
+          "evidence": "All 3 rounds contain exactly ### \u7528\u6237, ### AI, ### \u6267\u884c, ### \u7ed3\u679c. English conversation context preserved correctly."
+        },
+        {
+          "text": "SQL query (SELECT * FROM orders...) and CREATE INDEX statement appear inside fenced code blocks",
+          "passed": true,
+          "evidence": "Lines 11-13: SELECT query in ```sql block. Lines 21-24: EXPLAIN ANALYZE in ```sql block. Lines 46-48 and 51-53: CREATE INDEX in ```sql blocks. \\d orders also in ```sql block."
+        },
+        {
+          "text": "'# Final Conclusion' contains all four sub-sections: '## \u95ee\u9898\u672c\u8d28', '## \u5173\u952e\u7ed3\u8bba', '## \u6700\u7ec8\u65b9\u6848', '## \u540e\u7eed\u52a8\u4f5c'",
+          "passed": true,
+          "evidence": "Lines 84, 88, 94, 104: exactly ## \u95ee\u9898\u672c\uc9c8, ## \u5173\u952e\u7ed3\u8bba, ## \u6700\u7ec8\u65b9\u6848, ## \u540e\u7eed\u52a8\u4f5c. Note: Final Conclusion uses Chinese sub-headings even though the conversation was in English \u2014 consistent with skill template."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.2,
+        "passed": 1,
+        "failed": 4,
+        "total": 5,
+        "time_seconds": 36.1,
+        "tokens": 11814,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Output contains all three top-level headings: '# Session Title', '# Timeline', and '# Final Conclusion'",
+          "passed": false,
+          "evidence": "Has H1 title '# Session Notes: FastAPI 500 \u9519\u8bef\u8c03\u8bd5'. Missing '# Timeline' \u2014 uses '## Round 1 \u2014 \u95ee\u9898\u63cf\u8ff0\u4e0e\u521d\u6b65\u6392\u67e5' directly. Missing '# Final Conclusion' \u2014 uses '## \u603b\u7ed3' instead."
+        },
+        {
+          "text": "Each round in Timeline has all four sub-headings: '### \u7528\u6237', '### AI', '### \u6267\u884c', '### \u7ed3\u679c'",
+          "passed": false,
+          "evidence": "Uses '**User:**' / '**Claude:**' inline bold labels, not ### subsections. No '### \u6267\u884c' or '### \u7ed3\u679c' headings anywhere in the document."
+        },
+        {
+          "text": "Shell commands (e.g., uvicorn, create_engine code) appear inside fenced code blocks, not as plain text",
+          "passed": true,
+          "evidence": "uvicorn command in ```bash block. create_engine lazy-init and lifecycle hooks both in ```python blocks."
+        },
+        {
+          "text": "'# Final Conclusion' contains all four sub-sections: '## \u95ee\u9898\u672c\u8d28', '## \u5173\u952e\u7ed3\u8bba', '## \u6700\u7ec8\u65b9\u6848', '## \u540e\u7eed\u52a8\u4f5c'",
+          "passed": false,
+          "evidence": "No '# Final Conclusion' section. Ends with a '## \u603b\u7ed3' section containing a table \u2014 none of the four required sub-sections (\u95ee\u9898\u672c\u8d28/\u5173\u952e\u7ed3\u8bba/\u6700\u7ec8\u65b9\u6848/\u540e\u7eed\u52a8\u4f5c) are present."
+        },
+        {
+          "text": "The transcript shows save_session.py was invoked OR the file was written to ~/notes/session.md",
+          "passed": false,
+          "evidence": "No skill guidance, so save_session.py was never invoked. Agent was told ~/notes is a file, so that save was skipped. Only the workspace output was written."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.2,
+        "passed": 1,
+        "failed": 4,
+        "total": 5,
+        "time_seconds": 37.1,
+        "tokens": 11895,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Output contains all three top-level headings: '# Session Title', '# Timeline', and '# Final Conclusion'",
+          "passed": false,
+          "evidence": "Has H1 title '# \u4f1a\u8bdd\u5bfc\u51fa \u2014 Node.js \u9879\u76ee CI \u914d\u7f6e'. Missing '# Timeline'. Missing '# Final Conclusion' \u2014 uses '## \u6700\u7ec8\u4ea7\u51fa' instead."
+        },
+        {
+          "text": "Each round in Timeline has all four sub-headings: '### \u7528\u6237', '### AI', '### \u6267\u884c', '### \u7ed3\u679c'",
+          "passed": false,
+          "evidence": "Uses '**\u7528\u6237:**' / '**Claude:**' inline bold, not ### subsections. Round 1 merges user and Claude turns together. No '### \u6267\u884c' or '### \u7ed3\u679c' headings."
+        },
+        {
+          "text": "GitHub Actions YAML content appears inside a fenced code block",
+          "passed": true,
+          "evidence": "Lines 30-57 and 69-103: full YAML in ```yaml fenced blocks in both Round 2 and Round 3."
+        },
+        {
+          "text": "'# Final Conclusion' contains all four sub-sections: '## \u95ee\u9898\u672c\u8d28', '## \u5173\u952e\u7ed3\u8bba', '## \u6700\u7ec8\u65b9\u6848', '## \u540e\u7eed\u52a8\u4f5c'",
+          "passed": false,
+          "evidence": "Ends with '## \u6700\u7ec8\u4ea7\u51fa' containing a configuration summary \u2014 none of the four required sub-sections present."
+        },
+        {
+          "text": "Since no path was specified, agent either asks the user about save location OR saves with a date-based default filename (session-YYYY-MM-DD.md format)",
+          "passed": false,
+          "evidence": "No path-handling behavior shown. Agent wrote directly to the provided workspace path without any default filename logic or prompting the user. No date-based naming."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 3,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.25,
+        "passed": 1,
+        "failed": 3,
+        "total": 4,
+        "time_seconds": 33.9,
+        "tokens": 11289,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Output contains all three top-level headings: '# Session Title', '# Timeline', and '# Final Conclusion'",
+          "passed": false,
+          "evidence": "Has H1 '# Claude Code Session Export'. Missing '# Timeline'. Missing '# Final Conclusion' \u2014 uses '## Outcome' and '## Conversation' structure instead."
+        },
+        {
+          "text": "Each round in Timeline has all four sub-headings: '### \u7528\u6237', '### AI', '### \u6267\u884c', '### \u7ed3\u679c'",
+          "passed": false,
+          "evidence": "Uses '### Round N \u2014 Topic' headings with '**User:**' / '**Claude:**' / '**Finding:**' / '**Result:**' bold labels \u2014 no Chinese subsection headings at all."
+        },
+        {
+          "text": "SQL query (SELECT * FROM orders...) and CREATE INDEX statement appear inside fenced code blocks",
+          "passed": true,
+          "evidence": "Lines 16-20: SELECT query in ```sql block. Lines 38-40: CREATE INDEX in ```sql block. \\d orders also in ```sql block."
+        },
+        {
+          "text": "'# Final Conclusion' contains all four sub-sections: '## \u95ee\u9898\u672c\u8d28', '## \u5173\u952e\u7ed3\u8bba', '## \u6700\u7ec8\u65b9\u6848', '## \u540e\u7eed\u52a8\u4f5c'",
+          "passed": false,
+          "evidence": "No '# Final Conclusion' section. Document ends with '## Outcome' table and an italic footer line \u2014 none of the four Chinese sub-sections present."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 66.7,
+        "stddev": 30.4044,
+        "min": 48.5,
+        "max": 101.8
+      },
+      "tokens": {
+        "mean": 16516.3333,
+        "stddev": 3778.9965,
+        "min": 13967,
+        "max": 20858
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.2167,
+        "stddev": 0.0289,
+        "min": 0.2,
+        "max": 0.25
+      },
+      "time_seconds": {
+        "mean": 35.7,
+        "stddev": 1.6371,
+        "min": 33.9,
+        "max": 37.1
+      },
+      "tokens": {
+        "mean": 11666.0,
+        "stddev": 328.9939,
+        "min": 11289,
+        "max": 11895
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.78",
+      "time_seconds": "+31.0",
+      "tokens": "+4850"
+    }
+  },
+  "notes": []
+}

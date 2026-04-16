@@ -1,0 +1,52 @@
+{
+  "expectations": [
+    {
+      "text": "Output contains all three top-level headings: '# Session Title', '# Timeline', and '# Final Conclusion'",
+      "passed": true,
+      "evidence": "Line 1: '# FastAPI 服务 500 错误排查与数据库连接修复' (real title H1), Line 3: '# Timeline', Line 98: '# Final Conclusion'"
+    },
+    {
+      "text": "Each round in Timeline has all four sub-headings: '### 用户', '### AI', '### 执行', '### 结果'",
+      "passed": true,
+      "evidence": "All three rounds contain exactly ### 用户, ### AI, ### 执行, ### 结果. E.g. Round 1: lines 7/11/16/21"
+    },
+    {
+      "text": "Shell commands (e.g., uvicorn, create_engine code) appear inside fenced code blocks, not as plain text",
+      "passed": true,
+      "evidence": "uvicorn command wrapped in ```bash block (line 17-19). create_engine lazy-init and full startup/shutdown refactor both in ```python blocks (lines 47-50, 71-89)"
+    },
+    {
+      "text": "'# Final Conclusion' contains all four sub-sections: '## 问题本质', '## 关键结论', '## 最终方案', '## 后续动作'",
+      "passed": true,
+      "evidence": "Lines 100, 104, 109, 114: exactly ## 问题本质, ## 关键结论, ## 最终方案, ## 后续动作"
+    },
+    {
+      "text": "The transcript shows save_session.py was invoked OR the file was written to ~/notes/session.md",
+      "passed": true,
+      "evidence": "Agent summary confirms: 'Save to ~/notes/session.md failed' after attempting to run save_session.py. Script was invoked; failure was due to ~/notes being a file not a directory (environmental issue). Invocation confirmed."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "claims": [
+    {
+      "claim": "save_session.py raises FileExistsError when parent path is an existing file",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Agent confirmed os.makedirs(parent, exist_ok=True) fails when parent is a file — exist_ok only suppresses errors for existing directories"
+    }
+  ],
+  "eval_feedback": {
+    "suggestions": [
+      {
+        "assertion": "Output contains all three top-level headings: '# Session Title', '# Timeline', and '# Final Conclusion'",
+        "reason": "Assertion uses '# Session Title' as a literal string but the skill correctly replaces this with a real title. Consider changing to 'has a top-level H1 title, # Timeline, and # Final Conclusion' to avoid false fails if someone checks literally."
+      }
+    ],
+    "overall": "Assertions are solid and discriminating. The save_session.py invocation assertion correctly distinguishes skill behavior."
+  }
+}
